@@ -8,27 +8,23 @@ package game;
 import cm3038.search.ActionStatePair;
 import java.util.List;
 
-
 /**
  *
  * @author plucarelli
  */
-public class GameTests {
-    
-    
+public class FrogTests {
     public static void main(String[] args){
-        // test the construction of a world
-        String world = "RRR---GGG";
-        char[] frogWorld = {'R','R','R','-','-','-','G','G','G'};
-        FrogsState s = new FrogsState(world);
-        FrogsState s2 = new FrogsState(frogWorld);
-        System.out.println(s2);
+        String start = "RRRR-GGGG";
+        String goal = "GGGG-RRRR";
         
-        // testing the action
-        FrogAction a = new FrogAction(1, 3, FrogColor.RED);
+        FrogsState s = new FrogsState(start);
+        FrogsState s2 = new FrogsState(goal);
+        
+        // tets the apply action function
+        FrogAction a = new FrogAction(1, 3, FrogColor.GREEN);
         System.out.println(a);
         System.out.println(s2.applyAction(a));
-        
+
         // test the can jump one method
         boolean result = s2.canJumpOne(5, FrogColor.RED);
         System.out.println(result);
@@ -43,7 +39,7 @@ public class GameTests {
             System.out.println(c.state);
         }
         
-       
+        // test the equals function
+        System.out.println(s2.equals(s));
     }
-    
 }

@@ -21,6 +21,7 @@ public class FrogAction extends Action{
         this.fromPosition = frogPosition;
         this.toPosition = steps;
         this.color = color;
+        this.cost = color == color.RED ? 3 : 1;
     }
    
 
@@ -31,10 +32,12 @@ public class FrogAction extends Action{
                 case RED:
                     output += "Moving " + this.color + " frog from position " + 
                             fromPosition + " to position " + toPosition;
+                    output += "\nMove cost: " + this.cost;
                     break;
                 case GREEN:
                     output += "Moving " + this.color + " frog from position " + 
                             fromPosition + " to position " + toPosition;
+                    output += "\nMove cost: " + this.cost;
                     break;
         }
         

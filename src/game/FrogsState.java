@@ -1,6 +1,7 @@
 package game;
 import cm3038.search.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FrogsState implements State{
@@ -104,6 +105,34 @@ public class FrogsState implements State{
         }
         return response;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        for(int i = 0 ; i < this.world.length ; i++){
+            if(this.world[i]=='R')
+                hash += i*7;
+            else if(this.world[i]=='G')
+                hash += i*9;
+            else
+                hash += i*17;
+        }
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof FrogsState))
+            return false;
+        FrogsState frogsState = (FrogsState)obj;
+        for(int i = 0 ; i < this.world.length ; i++ ){
+            if(this.world[i] != frogsState.world[i])
+                return false;
+        }
+        return true;
+    }
+    
+    
 
     @Override
     public String toString() {
