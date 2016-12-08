@@ -1,28 +1,39 @@
+/*
+ * CM3038 Artificial Intelligence for Problem Solving
+ * Coursework - December 2016
+ * -----------------------------------
+ * Pierpaolo Lucarelli - 1400571
+ * Robert Gordon University
+ */
 package game;
 
-import cm3038.search.ActionStatePair;
 import cm3038.search.Path;
-import java.util.List;
 
 public class RunGame {
-    
-    
-    public static void main(String[] args){
-        String start = "RRRR-GGGG";
-        String goal = "GGGG-RRRR";
-        
-        FrogsState s = new FrogsState(start);
-        FrogsState s2 = new FrogsState(goal);
-        
-        FrogSearchProblem game = new FrogSearchProblem(s, s2);
+
+    public static void main(String[] args) {
+        // chose the starting and goal state
+        String start = "GG-GRRR";
+        String goal  = "GGG-RRR";
+
+        // generate states form start and goal
+        FrogsState startState = new FrogsState(start);
+        FrogsState goalState = new FrogsState(goal);
+
+        System.out.println("Initial State: " + startState);
+        System.out.println("Goal State: " + goalState + "\n\n");
+
+        // run the search problem
+        FrogSearchProblem game = new FrogSearchProblem(startState, goalState);
         Path result = game.search();
-        
-        if(result==null)
+
+        if (result == null) // no result
+        {
             System.out.println("No result");
-        else{
+        } else { // result found
+            System.out.println("Nodes visited: " + game.nodeVisited);
+            System.out.println("Cost: " + result.cost + "\n");
             result.print();
-            System.out.println("Nodes visited: "+game.nodeVisited);
-            System.out.println("Cost: "+result.cost+"\n");
         }
     }
 }

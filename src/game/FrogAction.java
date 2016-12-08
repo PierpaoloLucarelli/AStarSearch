@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * CM3038 Artificial Intelligence for Problem Solving
+ * Coursework - December 2016
+ * -----------------------------------
+ * Pierpaolo Lucarelli - 1400571
+ * Robert Gordon University
  */
 package game;
 
@@ -13,18 +15,21 @@ import cm3038.search.Action;
  */
 public class FrogAction extends Action{
     
+    // The position of the frog to be moved
     public int fromPosition;
+    // The position where the frog will land
     public int toPosition;
+    // The color rof the frog
     public FrogColor color;
 
     public FrogAction(int frogPosition, int steps, FrogColor color) {
         this.fromPosition = frogPosition;
         this.toPosition = steps;
         this.color = color;
-        this.cost = color == color.RED ? 3 : 1;
+        // assign 1 or 3 to the cost of the action depeding on frog color
+        this.cost = color == FrogColor.RED ? 3 : 1;
     }
    
-
     @Override
     public String toString() {
         String output = "";
@@ -39,8 +44,7 @@ public class FrogAction extends Action{
                             fromPosition + " to position " + toPosition;
                     output += "\nMove cost: " + this.cost;
                     break;
-        }
-        
+        }    
         return output;
     }
     
